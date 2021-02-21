@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Add new email address 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-item>
+    <ion-label position="floating">Add name contact:</ion-label>
+    <ion-input [(ngModel)]="toAddContact" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Add email contact:</ion-label>
+    <ion-input [(ngModel)]="toAddEmail" ></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" (click)="add()">Add</ion-button>
+
+</ion-content>
