@@ -13,8 +13,16 @@ export class DatalocalService {
 
   constructor(private strorage: Storage, 
               public toastController: ToastController
-  ) { }
-    //157
+  ) {
+    this.getEmails();
+   }
+
+  async getEmails(){
+    const emails: emailInter[] = await this.strorage.get('email');
+    this.emails=emails || [];
+    return this.emails;
+  }
+
   saveEmail(emailToAdd: emailInter){
     let exist = false;
     let message='';
@@ -24,6 +32,7 @@ export class DatalocalService {
         break; 
       }
     }
+    
     console.log(exist);
     if(!exist){
       this.emails.push(emailToAdd);
@@ -35,6 +44,7 @@ export class DatalocalService {
     this.presentToast(message);
     this.strorage.set('email',this.emails)
   }
+  
   async presentToast(message: string) {
     const toast = await this.toastController.create({
       message: message,

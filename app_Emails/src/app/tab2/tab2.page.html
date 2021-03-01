@@ -1,17 +1,32 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Send an email
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-list>
+    
+    <ion-list-header>
+      <ion-label>To:</ion-label>
+    </ion-list-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    
+    <ion-item *ngFor="let item of emails" (click)="toSendContact(item)">
+      <ion-checkbox slot="start" color="primary"></ion-checkbox>
+      <ion-label>{{item.name}}: {{ item.email }}</ion-label>
+    </ion-item>
+
+  </ion-list>
+
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button (click)="send()" expand="block" fill="clear" shape="round">
+      Send
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
